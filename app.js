@@ -10,6 +10,7 @@ const permissionsPolicy = require("permissions-policy");
 
 // ROUTES
 const productRoutes = require("./routes/product-routes");
+const carouselRoutes = require("./routes/carousel-routes");
 
 // INIT
 const app = express();
@@ -30,6 +31,13 @@ const createUploadsProductFolder = (req, res, next) => {
   }
   next();
 };
+const createUploadsCarouselFolder = (req, res, next) => {
+    const folderPath = "public/carousels";
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath, { recursive: true });
+    }
+    next();
+  };
 
 // PUBLIC FOLDER
 app.use(express.static("public"));
@@ -62,6 +70,7 @@ app.use(
 
 // Routes
 app.use("/api/v1/product", createUploadsProductFolder, productRoutes);
+app.use("/api/v1/carousel", createUploadsCarouselFolder, carouselRoutes);
 
 // Export app
 const port = process.env.PORT || 3000;

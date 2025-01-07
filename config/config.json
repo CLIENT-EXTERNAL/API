@@ -1,26 +1,26 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
+    "username": "postgres",
+    "password": "Admin@Nyota@2024Cizfac",
+    "database": "moonpharma_dev",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432,
     "timezone": "Africa/Brazzaville"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
+    "username": "postgres",
+    "password": "Admin@Nyota@2024Cizfac",
+    "database": "moonpharma_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432,
     "timezone": "Africa/Brazzaville"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "postgres",
+    "password": "Admin@Nyota@2024Cizfac",
+    "database": "moonpharma_prod",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432,

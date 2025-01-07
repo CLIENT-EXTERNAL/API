@@ -4,15 +4,15 @@ const upload = require("../middlewares/product-middleware");
 const router = express.Router();
 
 // CREATION
-router.post("/product/create", upload.single("image"), productController.create);
+router.post("/create", upload.single("image"), productController.create);
 
 // LIST
-router.get("/product/list", productController.list);
+router.get("/list", productController.list);
 
 // SEARCH PRODUCT BY NAME
-router.get("/product/search", productController.search);
+router.get("/search", productController.search);
 
 // DELETE
-router.delete("/product/delete/:id", productController.destroy);
+router.delete("/delete/:id", productController.destroy);
 
 module.exports = router;

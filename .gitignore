@@ -2,4 +2,3 @@ node_modules
 public/*
 logs/*
 package-lock.json
-.env

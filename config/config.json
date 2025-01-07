@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "Admin@Nyota@2024Cizfac",
-    "database": "moonpharma_dev",
+    "database": "m_dev",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432,
@@ -11,7 +11,7 @@
   "test": {
     "username": "postgres",
     "password": "Admin@Nyota@2024Cizfac",
-    "database": "moonpharma_test",
+    "database": "m_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432,
@@ -20,7 +20,7 @@
   "production": {
     "username": "postgres",
     "password": "Admin@Nyota@2024Cizfac",
-    "database": "moonpharma_prod",
+    "database": "m_prod",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": 5432,

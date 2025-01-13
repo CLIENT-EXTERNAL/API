@@ -134,31 +134,46 @@ const destroy = async (req, res) => {
 const search = async (req, res) => {
   try {
     const { title } = req.query;
+
+    if (!title || title.trim() === "") {
+      return res.status(400).json({
+        status: "error",
+        message: "Le paramètre 'title' est requis pour effectuer une recherche.",
+      });
+    }
+    
     const products = await Product.findAll({
       where: {
-        title: {
-          [Op.iLike]: `%${title}%`,
-        },
+        [Op.or]: [
+          { title: { [Op.like]: `%${query}%` } },
+          { description: { [Op.like]: `%${query}%` } },
+        ],
       },
     });
 
-    const formatedProducts = products.map((product) => {
-      return {
-        id: product.id,
-        title: product.title,
-        description: product.description,
-        price: product.price,
-        image: product.image,
-        thumbnail: product.thumbnail,
-      };
-    });
+    if (products.length === 0) {
+      return res.status(404).json({
+        status: "success",
+        message: "Aucun produit trouvé pour la recherche spécifiée.",
+        data: [],
+      });
+    }
+
+    const formattedProducts = products.map((product) => ({
+      id: product.id,
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      image: product.image,
+      thumbnail: product.thumbnail,
+    }));
 
     return res.status(200).json({
       status: "success",
-      data: formatedProducts,
+      data: formattedProducts,
     });
   } catch (error) {
-    console.error(`Error lors de la recherche des produits: ${error}`);
+    console.error(`Erreur lors de la recherche des produits : ${error}`);
     return res.status(500).json({
       status: "error",
       message: "Une erreur est survenue lors de la recherche des produits.",

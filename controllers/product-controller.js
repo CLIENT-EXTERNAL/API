@@ -145,8 +145,8 @@ const search = async (req, res) => {
     const products = await Product.findAll({
       where: {
         [Op.or]: [
-          { title: { [Op.like]: `%${query}%` } },
-          { description: { [Op.like]: `%${query}%` } },
+          { title: { [Op.like]: `%${title}%` } },
+          { description: { [Op.like]: `%${title}%` } },
         ],
       },
     });
